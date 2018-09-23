@@ -7,5 +7,6 @@ Este proyecto cuenta con la base para iniciar la construccion de una plantilla w
 - Watch Changed Files
 - Optimizate Images
 ## Comandos
+- Instalar Dependencias --> npm install
 - Iniciar gulp y server --> gulp
 - Optimizar imagen --> gulp images
