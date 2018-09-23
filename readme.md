@@ -4,3 +4,5 @@ Este proyecto cuenta con la base para iniciar la construccion de una plantilla w
 - Compilar Sass -> Css
 - Compilar Pug -> Html
 - Compilar Js (ES6) -> Js(ES5)
+- Watch Changed Files
+- Optimizate Images -> Manual(execute > gulp images)
