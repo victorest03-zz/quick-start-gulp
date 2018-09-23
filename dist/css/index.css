@@ -1,0 +1,12 @@
+body {
+  background-color: yellow;
+}
+
+body h1 {
+  color: blue;
+  font-size: 2em;
+}
+
+body img {
+  width: 250px;
+}
