@@ -30,7 +30,7 @@ gulp.task('images', function(cb) {
 
 gulp.task("CompilePug",()=>{
     gulp.src("./build/pug/**/!(_)*.pug")
-        .pipe(watch("./build/pug/**/!(_)*.pug"))
+        .pipe(watch("./build/pug/**/*.pug"))
         .pipe(plumber())
         .pipe(pug({
             pretty : true
