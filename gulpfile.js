@@ -1,7 +1,7 @@
 const gulp = require("gulp"),
     plumber = require('gulp-plumber'),
     watch = require('gulp-watch'),
-    image = require('gulp-image'),
+    //image = require('gulp-image'),
     pug = require("gulp-pug"),
     sass = require("gulp-sass"),
     babel = require("gulp-babel"),
@@ -11,22 +11,22 @@ const gulp = require("gulp"),
     rename = require('gulp-rename'),
     browserSync = require('browser-sync').create()
 
-gulp.task('images', function(cb) {
-    gulp.src(['./build/**/*.png','./build/**/*.jpg','./build/**/*.gif','./build/**/*.jpeg'])
-        .pipe(image({
-            pngquant: true,
-            optipng: false,
-            zopflipng: true,
-            jpegRecompress: false,
-            mozjpeg: true,
-            guetzli: false,
-            gifsicle: true,
-            svgo: true,
-            concurrent: 10,
-            quiet: true
-        }))
-        .pipe(gulp.dest('./dist/'));
-});
+// gulp.task('images', function(cb) {
+//     gulp.src(['./build/**/*.png','./build/**/*.jpg','./build/**/*.gif','./build/**/*.jpeg'])
+//         .pipe(image({
+//             pngquant: true,
+//             optipng: false,
+//             zopflipng: true,
+//             jpegRecompress: false,
+//             mozjpeg: true,
+//             guetzli: false,
+//             gifsicle: true,
+//             svgo: true,
+//             concurrent: 10,
+//             quiet: true
+//         }))
+//         .pipe(gulp.dest('./dist/'));
+// });
 
 gulp.task("CompilePug",()=>{
     gulp.src("./build/pug/**/!(_)*.pug")
