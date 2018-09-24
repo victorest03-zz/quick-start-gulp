@@ -35,8 +35,7 @@ gulp.task("CompilePug",()=>{
         .pipe(pug({
             pretty : true
         }))
-        .pipe(gulp.dest("./dist/"))
-        .pipe(browserSync.stream());
+        .pipe(gulp.dest("./dist/"));
 })
 
 //Definicion de Tareas
@@ -50,13 +49,6 @@ gulp.task("CompileSass", ()=>{
         .pipe(autoprefixer({
             versions: ['last 2 browsers']
         }))
-        .pipe(gulp.dest("./dist/css"))
-});
-
-gulp.task("minifycss", () => {
-    gulp.src(["./dist/css/**/*.css", "!./dist/css/**/*.min.css"])
-        .pipe(watch(["./dist/css/**/*.css", "!./dist/css/**/*.min.css"]))
-        .pipe(plumber())
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest("./dist/css"))
@@ -68,17 +60,10 @@ gulp.task("compilejs", () => {
         .pipe(watch(["./build/js/**/*.js"]))
         .pipe(plumber())
         .pipe(babel())
+        .pipe(uglify())
+        .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest("./dist/js"))
-});
-
-gulp.task("minifyjs", () => {
-gulp.src(["./dist/js/**/*.js","!./dist/js/**/*.min.js"])
-    .pipe(watch(["./dist/js/**/*.js","!./dist/js/**/*.min.js"]))
-    .pipe(plumber())
-    .pipe(uglify())
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest("./dist/js"))
-    .pipe(browserSync.stream());
+        .pipe(browserSync.stream())
 });
 
 gulp.task("serve",()=>{
@@ -93,7 +78,5 @@ gulp.task("serve",()=>{
 });
 
 gulp.task("default", ["CompilePug","CompileSass","compilejs"],() => {
-    gulp.start("minifycss");
-    gulp.start("minifyjs");
     gulp.start("serve");
 });
