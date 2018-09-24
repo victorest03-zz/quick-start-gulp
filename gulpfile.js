@@ -30,7 +30,6 @@ const gulp = require("gulp"),
 
 gulp.task("CompilePug",()=>{
     gulp.src("./build/pug/**/!(_)*.pug")
-        .pipe(watch("./build/pug/**/!(_)*.pug"))
         .pipe(plumber())
         .pipe(pug({
             pretty : true
@@ -78,5 +77,6 @@ gulp.task("serve",()=>{
 });
 
 gulp.task("default", ["CompilePug","CompileSass","compilejs"],() => {
+    gulp.watch("./build/pug/**/*.pug",["CompilePug"])
     gulp.start("serve");
 });
