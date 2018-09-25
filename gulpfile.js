@@ -35,6 +35,7 @@ gulp.task("CompilePug",()=>{
             pretty : true
         }))
         .pipe(gulp.dest("./dist/"));
+    browserSync.reload
 })
 
 //Definicion de Tareas
@@ -69,10 +70,6 @@ gulp.task("serve",()=>{
     browserSync.init({
         server: "./dist/",
         notify: false
-    });
-
-    watch("./dist/*.html", ()=>{
-        browserSync.reload
     });
 });
 
