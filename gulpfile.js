@@ -35,7 +35,6 @@ gulp.task("CompilePug",()=>{
             pretty : true
         }))
         .pipe(gulp.dest("./dist/"));
-    browserSync.reload
 })
 
 //Definicion de Tareas
@@ -52,7 +51,7 @@ gulp.task("CompileSass", ()=>{
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest("./dist/css"))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream())
 });
 
 gulp.task("compilejs", () => {
@@ -63,13 +62,17 @@ gulp.task("compilejs", () => {
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest("./dist/js"))
-        .pipe(browserSync.stream())
 });
 
 gulp.task("serve",()=>{
     browserSync.init({
         server: "./dist/",
-        notify: false
+        notify: false,
+    });
+
+    gulp.watch("./dist/*.html").on("change", browserSync.reload)
+    gulp.watch("./dist/js/*.js", () =>{
+        browserSync.reload();
     });
 });
 
